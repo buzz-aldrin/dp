@@ -23,9 +23,8 @@ element of the LIS. Then, L(i) can be recursively written as:
 L(i) = 1 + max( L(j) ) where 0 < j < i and arr[j] < arr[i]; or
 L(i) = 1, if no such j exists.
 To find the LIS for a given array, we need to return max(L(i)) where 0 < i < n.
-
-
 */
+
 var (
 	input1 = []int{10, 22, 9, 33, 21, 50, 41, 60, 80, 6}
 	input2 = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
