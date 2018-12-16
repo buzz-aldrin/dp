@@ -1,9 +1,13 @@
-3.  https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
-    The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given
-    sequence such that all elements of the subsequence are sorted in increasing order. For example, the length of LIS
-    for {10, 22, 9, 33, 21, 50, 41, 60, 80} is 6 and LIS is {10, 22, 33, 50, 60, 80}.
+3.  The Longest Increasing Subsequence - https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
+    (LIS) problem is to find the length of the longest subsequence of a given sequence such that all elements of the
+    subsequence are sorted in increasing order. For example, the length of LIS
+    for  and LIS is .
 
-    eg.
+    Examples:
+        {10, 22, 9, 33, 21, 50, 41, 60, 80} LIS is 6 i.e {10, 22, 33, 50, 60, 80}
+    Explanation:
+         10	22	29	24	25	50	41	60	80
+    LIS  1	2	3	3	4	5	5	6	7
                         LIS(4)
                 /			|		\
             LIS(3)		LIS(2)		LIS(1)
@@ -12,5 +16,17 @@
         /
     LIS(1)
 
-            10	22	29	24	25	50	41	60	80
-    LIS		1	2	3	3	4	5	5	6	7
+
+4.  Longest Common Subsequence - https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+    It is a classic computer science problem, the basis of diff (a file comparison program that outputs the differences
+    between two files), and has applications in bio-informatics.
+
+    Examples:
+    LCS for input Sequences “ABCDGH” and “AEDFHR” is “ADH” of length 3.
+    LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4.
+
+                            lcs("AXYT", "AYZX")
+                           /                 \
+             lcs("AXY", "AYZX")            lcs("AXYT", "AYZ")
+             /                \              /               \
+    lcs("AX", "AYZX") lcs("AXY", "AYZ")   lcs("AXY", "AYZ") lcs("AXYT", "AY")
