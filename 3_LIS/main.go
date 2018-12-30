@@ -53,7 +53,7 @@ func LISRecursive(input []int, m int, max *int) int {
 	return currLIS
 }
 
-func LIS(input []int) int {
+func LISDP(input []int) int {
 	if len(input) <= 1 {
 		return 1
 	}
@@ -88,9 +88,9 @@ func max(a, b int) int {
 }
 
 func main() {
-	fmt.Printf("LIS of %+v is %d\n", input1, LIS(input1))
-	fmt.Printf("LIS of %+v is %d\n", input2, LIS(input2))
-	fmt.Printf("LIS of %+v is %d\n", input3, LIS(input3))
+	fmt.Printf("LIS of %+v is %d\n", input1, LISDP(input1))
+	fmt.Printf("LIS of %+v is %d\n", input2, LISDP(input2))
+	fmt.Printf("LIS of %+v is %d\n", input3, LISDP(input3))
 
 	lis := new(int)
 	LISRecursive(input1, len(input1)-1, lis)

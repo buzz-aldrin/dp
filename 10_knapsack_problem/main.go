@@ -12,37 +12,26 @@ either pick the complete item, or don’t pick it (0-1 property).
 
 */
 
-type nonDP struct {
-}
-
-type dp struct {
-}
-
 var (
 	vals = []int{60, 100, 120}
 	wt   = []int{10, 20, 30}
 )
 
 func main() {
-	var nonDP *nonDP
-
 	// without repetition
 	fmt.Printf("Knapsack soltion = %d, values = %v, weigths = %v, weigth = %d\n",
-		nonDP.Knapsack(vals, wt, 50, 0), vals, wt, 50)
+		knapsack(vals, wt, 50, 0), vals, wt, 50)
 }
 
-func (nonDP *nonDP) Knapsack(vals []int, wts []int, wt, i int) int {
+func knapsack(vals []int, wts []int, wt, i int) int {
 	if wt <= 0 || i >= len(vals) {
 		return 0
 	}
 	if wts[i] > wt {
-		return nonDP.Knapsack(vals, wts, wt, i+1)
+		return knapsack(vals, wts, wt, i+1)
 	}
-	// include current object
-	v1 := vals[i] + nonDP.Knapsack(vals, wts, wt-wts[i], i+1)
-	// exclude current object
-	v2 := nonDP.Knapsack(vals, wts, wt, i+1)
-	return max(v1, v2)
+	// max of (include current object, exclude current object)
+	return max(vals[i]+knapsack(vals, wts, wt-wts[i], i+1), knapsack(vals, wts, wt, i+1))
 }
 
 func max(a, b int) int {
@@ -51,17 +40,3 @@ func max(a, b int) int {
 	}
 	return a
 }
-
-//func (dp *dp) Knapsack(vals []int, wts []int, wt int){
-//	table := make([]int, len(vals))
-//
-//	for i := 0; i < len(table); i++{
-//		tWt := wt
-//		for j := i; j < len(vals); j++{
-//			if tWt - wts[j] < 0{
-//				continue
-//			}
-//			table[i] = vals[i] +
-//		}
-//	}
-//}

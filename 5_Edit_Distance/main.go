@@ -19,16 +19,17 @@ Examples:
 	Output:  1
 	We can convert str1 into str2 by replacing 'a' with 'u'.
 
-			s	u	n	d	a	y
-		0	0	0	0	0	0	0
-	s	0	0	1	1	1	1	1
-	a	0	1	1	2	2	1	2
-	t	0	1	2	2	3	2	2
-	u	0	1	1	2	3	3	3
-	r	0	1	2	2	3	4	4
-	d	0	1	2	3	2	3	4
-	a	0	1	2	3	3	2	3
-	y	0	1	2	3	4	3	2
+		 s	u	n	d	a	y
+	  0	 1	2 	3 	4 	5 	6
+	s 1	 0 	1 	2 	3 	4 	5
+	a 2	 1 	1	2 	3 	3 	4
+	t 3	 2 	2 	2 	3 	4 	4
+	u 4	 3 	2 	3 	3 	4 	5
+	r 5	 4 	3 	3 	4 	4 	5
+	d 6	 5 	4 	4 	3 	4 	5
+	a 7	 6 	5 	5 	4 	3 	4
+	y 8	 7 	6 	6 	5 	4 	3
+
 */
 
 var (
@@ -84,7 +85,7 @@ func EDDP(str1, str2 []rune) int {
 			dpTable[i][j] = 1 + min(dpTable[i][j-1], dpTable[i-1][j], dpTable[i-1][j-1])
 		}
 	}
-
+	printTable(dpTable)
 	return dpTable[len(str1)][len(str2)]
 }
 

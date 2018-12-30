@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /*
 Given a value N, if we want to make change for N cents, and we have infinite supply of each of S = { S1, S2, .. , Sm}
@@ -14,22 +17,14 @@ So the output should be 5.
 
 */
 
-type nonDP struct {
-}
-
-type dp struct {
-}
-
 func main() {
-	var nonDP *nonDP
-
 	// without repetition
 	fmt.Printf("min = %d, floors = %d\n",
-		nonDP.eggDrop(10, 2), 100)
+		eggDrop(10, 2), 100)
 
 }
 
-func (nonDP *nonDP) eggDrop(floors int, eggs int) int {
+func eggDrop(floors int, eggs int) int {
 	if eggs == 1 {
 		return floors
 	}
@@ -37,9 +32,10 @@ func (nonDP *nonDP) eggDrop(floors int, eggs int) int {
 	if floors <= 1 {
 		return floors
 	}
-	min := 100000000000
+
+	min := math.MinInt32
 	for i := 1; i <= floors; i++ {
-		res := max(nonDP.eggDrop(i-1, eggs-1), nonDP.eggDrop(floors-i, eggs))
+		res := max(eggDrop(i-1, eggs-1), eggDrop(floors-i, eggs))
 		if res < min {
 			min = res
 		}
